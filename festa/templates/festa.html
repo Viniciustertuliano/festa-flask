@@ -17,18 +17,20 @@
         </tr>
       </thead>
       <tbody>
+        {% for convidado in convidados %}
         <tr>
-          <td></td>
-          <td></td>
+          <td>{{ convidado.nome }}</td>
+          <td>{{ convidado.acompanhante }}</td>
           <td>
-            <div class="btn-group pull-right">
-              <!--erro inserir depois 
+            <!--erro inserir depois
+              <div class="btn-group pull-right">
               <a class="btn btn-sm btn-primary">Editar</a>
               <a class="delete btn btn-sm btn-danger">Excluir</a>
-            -->
-            </div>
+            
+            </div>-->
           </td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
@@ -36,7 +38,7 @@
 
 
 
-  <!--Input dos convidados
+<!--Input dos convidados
   <form class="form-inline" method="post" th:object="${convidado}" th:action="@{/convidados}" style="margin: 20px 0">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Nome" th:field="*{nome}" />
