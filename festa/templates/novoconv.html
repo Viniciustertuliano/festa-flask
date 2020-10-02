@@ -1,18 +1,24 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block content %}
-<h1> {{ title }}</h1>
-
-<form action="" method="POST" novalidate>
-	{{ form.hidden_tag() }}
-	<div class="container form-group row">
-	<div class="row">
-		<div class="col-md-4">
-			{{ form.nome.label }} {{ form.nome(size=32) }}
-			{{ form.acomp.label }} {{ form.acomp(size=32) }}
-			{{ form.enviar() }}
-		</div>
+<div class="card bg-dark text-white " style="margin: 10px">
+	<div class="card-heading">
+		<h1 class="card-title">{{ title }}</h1>
 	</div>
+
+	<form action="" method="POST" novalidate>
+		{{ form.hidden_tag() }}
+		<div class="container form-group row placeholder="" ">
+			<div class="row">
+				<div class="col-md-4">
+					{{ form.nome(size=32, placeholder="Nome convidado") }}
+					{{ form.acomp(size=32, placeholder="Número de acompanhantes") }}
+					{{ form.enviar(class="btn btn-primary") }}
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
-</form>
+
+
 {% endblock %}
