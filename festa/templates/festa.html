@@ -6,7 +6,17 @@
 <div class="card bg-dark text-white " style="margin: 10px">
   <div class="card-heading">
     <h1 class="card-title">Lista de convidados</h1>
+    <a href="{{ url_for('festa.create') }}" type="button" class="btn btn-primary">Novo</a> 
   </div>
+  <!--
+  <form class="form-inline" method="post" th:object="${convidado}" th:action="@{/convidados}" style="margin: 20px 0">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Nome" th:field="*{nome}" />
+      <input type="text" class="form-control" placeholder="Acompanhantes" th:field="*{quantidadeAcompanhantes}" />
+      <button type="submit" class="btn btn-primary">Adicionar</button>
+    </div>
+  </form>
+  -->
   <div class="card-body">
     <table class="table table-dark">
       <thead>
@@ -22,12 +32,11 @@
           <td>{{ convidado.nome }}</td>
           <td>{{ convidado.acompanhante }}</td>
           <td>
-            <!--erro inserir depois
-              <div class="btn-group pull-right">
-              <a class="btn btn-sm btn-primary">Editar</a>
-              <a class="delete btn btn-sm btn-danger">Excluir</a>
-            
-            </div>-->
+            <div class="btn-group d-flex justify-content-end">
+              <a href="{{ url_for('festa.update', id=convidado.id) }}" class="btn btn-sm btn-primary">Editar</a>
+              <a href="{{ url_for('festa.delete', id=convidado.id) }}" class="delete btn btn-sm btn-danger">Excluir</a>
+
+            </div>
           </td>
         </tr>
         {% endfor %}
