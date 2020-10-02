@@ -1,3 +1,3 @@
 ## Lista Convidados 
-Projeto conclido :rocket: 
+Projeto concluido :rocket: 
 
