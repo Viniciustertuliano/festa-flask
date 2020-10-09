@@ -6,17 +6,17 @@
 <div class="card bg-dark text-white " style="margin: 10px">
   <div class="card-heading">
     <h1 class="card-title">Lista de convidados</h1>
-    <a href="{{ url_for('festa.create') }}" type="button" class="btn btn-primary">Novo</a> 
   </div>
-  <!--
-  <form class="form-inline" method="post" th:object="${convidado}" th:action="@{/convidados}" style="margin: 20px 0">
+
+  <form class="form-inline" method="post" style="margin: 20px 0" novalidate>
+    {{ form.hidden_tag() }}
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Nome" th:field="*{nome}" />
-      <input type="text" class="form-control" placeholder="Acompanhantes" th:field="*{quantidadeAcompanhantes}" />
-      <button type="submit" class="btn btn-primary">Adicionar</button>
+      {{ form.nome(size=32, type="text", class="form-control", placeholder="Nome") }}
+			{{ form.acomp(size=32, class="form-control", placeholder="Acompanhantes") }}
+			{{ form.enviar(class="btn btn-primary") }}
     </div>
   </form>
-  -->
+
   <div class="card-body">
     <table class="table table-dark">
       <thead>
