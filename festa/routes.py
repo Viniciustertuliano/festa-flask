@@ -8,11 +8,13 @@ from app import db
 
 @bp.route('/')
 def conv():
+    form = NovoConvidadoForm()
     convidados = Convidado.query.all()
-    return render_template('festa.html', convidados=convidados)
+    return render_template('festa.html', convidados=convidados, 
+                            title='Festa', form=form)
 
 
-@bp.route('/new', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
 def create():
     form = NovoConvidadoForm()
     if form.validate_on_submit():
@@ -20,9 +22,9 @@ def create():
         db.session.add(convidado)
         db.session.commit()
         return redirect(url_for('festa.conv'))
-    return render_template('novoconv.html', title='Novo Convidado', form=form)
+    return render_template('festa.html', title='Festa', form=form)
 
-@bp.route('/<int:id>/edit', methods=['GET', 'POST'])
+@bp.route('/<int:id>', methods=['GET', 'POST'])
 def update(id):
     convidado = Convidado.query.get_or_404(id)
     form = NovoConvidadoForm(nome_original=convidado.nome)
@@ -37,7 +39,9 @@ def update(id):
         convidado = Convidado.query.get(id)
         form.nome.data = convidado.nome
         form.acomp.data = convidado.acompanhante
-    return render_template('novoconv.html', form=form, title='Editar Convidado')
+        convidados = Convidado.query.all()
+    return render_template('festa.html', convidados=convidados, 
+                            form=form, title='Festa')
 
 
 @bp.route('/<int:id>/delete')
